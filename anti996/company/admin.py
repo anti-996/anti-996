@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Company
+
+
+class CompanyAdmin(admin.ModelAdmin):
+    ordering = ['id']
+
+
+admin.site.register(Company, CompanyAdmin)
