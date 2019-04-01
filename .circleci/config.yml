@@ -1,0 +1,34 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/anti-996/
+    docker:
+      - image: circleci/python:3.6.4
+    steps:
+      - checkout
+      - run: sudo chown -R circleci:circleci /usr/local/bin
+      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
+      - run: pip install -r ./anti996/requirements.txt
+      - run: python ./anti996/manage.py test
+
+  deploy_dev:
+    working_directory: ~/anti-996/
+    docker:
+      - image: fingerliu/openssh:latest
+    steps:
+      - run: echo "${ANTI996_SSH_PRIVATE_KEY}"| base64 -d > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+      - run: cat ~/.ssh/id_rsa
+      - run: ssh ubuntu@58.87.84.187 "cd /home/ubuntu/anti-996/;git pull"
+      - run: ssh ubuntu@58.87.84.187 "cd /home/ubuntu/anti-996/;source venv/bin/activate;pip install -r ./anti996/requirements.txt"
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - build
+      - deploy_dev:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
