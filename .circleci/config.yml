@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test:
+  build:
     working_directory: ~/anti-996/anti996/
     docker:
       - image: circleci/python:3.6.4
