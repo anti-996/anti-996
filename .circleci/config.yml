@@ -17,6 +17,7 @@ jobs:
       - image: fingerliu/openssh:latest
     steps:
       - run: echo "${ANTI996_SSH_PRIVATE_KEY}"| base64 -d > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+      - run: cat ~/.ssh/id_rsa
       - run: ssh ubuntu@58.87.84.187 "cd /home/ubuntu/anti-996/;git pull"
 
 workflows:
