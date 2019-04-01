@@ -19,7 +19,7 @@ jobs:
       - run: echo "${ANTI996_SSH_PRIVATE_KEY}"| base64 -d > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
       - run: cat ~/.ssh/id_rsa
       - run: ssh ubuntu@58.87.84.187 "cd /home/ubuntu/anti-996/;git pull"
-      - run: ssh ubuntu@58.87.84.187 "cd /home/ubuntu/anti-996/;source venv/bin/activate;pip install -r ./anti996/requirements.txt"
+      - run: ssh ubuntu@58.87.84.187 "cd /home/ubuntu/anti-996/anti996;source venv/bin/activate;pip install -r ./requirements.txt"
 
 workflows:
   version: 2
