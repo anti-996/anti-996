@@ -9,5 +9,6 @@ jobs:
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
       - run: pwd
+      - run: ls
       - run: pip install -r requirements.txt
       - run: python ./manage.py test
