@@ -10,3 +10,19 @@ jobs:
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
       - run: pip install -r ./anti996/requirements.txt
       - run: python ./anti996/manage.py test
+    branches:
+      only:
+        - master
+        - feature-ci
+
+  deploy-dev:
+    working_directory: ~/anti-996/
+    docker:
+      - image: fingerliu/openssh:latest
+    steps:
+      - run: echo "${ssh_private_key}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+      - run: ssh ubuntu@58.87.84.187 "cd /home/ubuntu/anti-996/;git pull"
+    branches:
+      only:
+        - master
+        - feature-ci

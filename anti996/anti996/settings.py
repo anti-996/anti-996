@@ -25,7 +25,7 @@ SECRET_KEY = '#jst=sw!6y53ay+*0)iw*0nr@qu)w8nn%d-($471i#eke-o22k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["dev.anti-996.com", "anti-996.com"]
 
 
 # Application definition
