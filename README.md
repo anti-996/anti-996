@@ -9,3 +9,6 @@ Anti-996 is a place for programmers to report the bad companies that let their e
 and also a place to record good companies that discourage thier employee work overtime, in-a-word, ANTI-996.
 
 Inspired by [996.icu](https://996.icu).
+
+## Notice
+This is still under develop, you can view the develop version at http://dev.anti-996.com
