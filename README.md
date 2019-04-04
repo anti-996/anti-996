@@ -1,4 +1,6 @@
 # Anti-996
+![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)
+
 Anti 996 association.
 
 
