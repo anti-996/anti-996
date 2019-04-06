@@ -9,7 +9,7 @@ from .models import Company
 
 def company_list(request: HttpRequest):
     companies = Company.objects.all().filter(ctype=Company.GOOD)
-    paginator = Paginator(companies, 10)
+    paginator = Paginator(companies, 6)
     page = request.GET.get("page", 1)
     try:
         p = page
