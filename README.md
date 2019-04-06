@@ -13,4 +13,4 @@ and also a place to record good companies that discourage thier employee work ov
 Inspired by [996.icu](https://996.icu).
 
 ## Notice
-This is still under develop, you can view the develop version at http://dev.anti-996.com
+This is still under develop, you can view the develop version at https://dev.anti-996.com

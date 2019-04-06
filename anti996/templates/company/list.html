@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+{% load bootstrap4 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+<head>
+    <meta charset="UTF-8">
+    <title>Anti 996 Company</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+</head>
+<body>
+<h1>Anti-996</h1>
+
+<div class="row hidden-md-up">
+{% for company in companies %}
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-block">
+        <h4 class="card-title">{{ company.name }}</h4>
+        <h6 class="card-subtitle text-muted">I raise for anti-996</h6>
+        <p class="card-text p-y-1">{{ company.desc| truncatechars:40 }}</p>
+        <a href="#" class="card-link">detail</a>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div><br>
+
+{% bootstrap_pagination companies %}
+
+</body>
+</html>
