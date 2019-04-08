@@ -8,7 +8,12 @@ from .models import Company
 
 
 def company_list(request: HttpRequest):
-    companies = Company.objects.all().filter(ctype=Company.GOOD)
+    ctype = request.GET.get("ctype", "1")
+    try:
+        ctype = int(ctype)
+    except Exception:
+        ctype = 1
+    companies = Company.objects.all().filter(ctype=ctype)
     paginator = Paginator(companies, 6)
     page = request.GET.get("page", 1)
     try:
@@ -19,4 +24,4 @@ def company_list(request: HttpRequest):
         p = paginator.num_pages
 
     print("page is %s, p is %s" % (page, p))
-    return render(request, "company/list.html", {"companies": paginator.page(p)})
+    return render(request, "company/list.html", {"companies": paginator.page(p), "ctype": ctype})
