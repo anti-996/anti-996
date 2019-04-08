@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load bootstrap4 %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+<head>
+    <meta charset="UTF-8">
+    <title>Anti 996 Company</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+    <link rel="stylesheet" href="{% static 'css/style-index.css' %}">
+</head>
+<body>
+    {% include "header.html" %}
+
+    {% block content %}{% endblock content %}
+
+    {% include "footer.html" %}
+</body>
+</html>

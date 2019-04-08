@@ -1,35 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "layout.html" %}
 
-{% load static %}
-{% load bootstrap4 %}
-{# Load CSS and JavaScript #}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-<head>
-    <meta charset="UTF-8">
-    <title>Anti 996 Company</title>
-    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
-</head>
-<body>
-<h1>Anti-996</h1>
+{% block content %}
 
-<div class="row hidden-md-up">
-{% for company in companies %}
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-block">
-        <h4 class="card-title">{{ company.name }}</h4>
-        <h6 class="card-subtitle text-muted">I raise for anti-996</h6>
-        <p class="card-text p-y-1">{{ company.desc| truncatechars:40 }}</p>
-        <a href="#" class="card-link">detail</a>
-      </div>
+<div class="container">
+    <div class="row">
+        {% for company in companies %}
+            <div class="item col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ company.name }}</h5>
+                        <p class="card-text">{{ company.desc }}</p>
+                        <a class="btn btn-primary showDetail" href="#">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-  </div>
-{% endfor %}
-</div><br>
+</div>
 
-{% bootstrap_pagination companies %}
-
-</body>
-</html>
+{% endblock content %}
