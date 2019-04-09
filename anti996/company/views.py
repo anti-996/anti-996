@@ -1,9 +1,12 @@
 from django.shortcuts import render
 from django.http.request import HttpRequest
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import Company
+
+from .forms import CompanyForm
 
 # Create your views here.
 
@@ -32,3 +35,20 @@ def company_detail(request: HttpRequest, pk):
     company = get_object_or_404(Company, pk=pk)
     
     return render(request, "company/detail.html", {"company": company})
+
+
+def company_add(request: HttpRequest):
+    if request.method == "POST":
+        form = CompanyForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/thanks/')
+    else:
+        form = CompanyForm()
+    return render(request, 'company/add.html', {'form': form})
+
+
+def thanks(request: HttpRequest):
+
+    return render(request, "thanks.html")
+
